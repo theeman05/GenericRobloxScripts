@@ -1,3 +1,10 @@
+--[[
+	Sup -
+	this is a script which spawns a screen gui containing the necessities to
+	place, traverse, and delete waypoint nodes by the user.
+	Enjoy...
+--]]
+
 local RS = game:GetService("RunService")
 local UIS = game:GetService("UserInputService")
 
