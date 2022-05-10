@@ -244,8 +244,10 @@ end
 local function charAdded(character)
 	humanoid = character:WaitForChild("Humanoid", 5)
 	humanoid.MoveToFinished:Connect(function(reached)
-		if mode == MODES.Following and reached then
-			curNode = curNode < table.getn(nodes) and curNode + 1 or 1
+		if mode == MODES.Following then
+			if reached then
+				curNode = curNode < table.getn(nodes) and curNode + 1 or 1
+			end
 			followNodes()
 		end
 	end)
