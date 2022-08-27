@@ -457,9 +457,24 @@ function createGroupBtn(group, targetPartName)
 	local partswithId = {}
 	local groupBtn = Scan(GROUP_OBJ, groupsScroller, partswithId)
 	local groupLabel = partswithId[6]
+	local arrObjects = group:GetChildren()
 
 	local function mouseLeave()
 		groupLabel.Text = group.Name.. " - ".. targetPartName
+	end
+	
+	local function monitorJoints(object)
+		local connection
+		connection = object.DescendantRemoving:Connect(function(removeObj)
+			if removeObj:IsA("Weld") or removeObj:IsA("Motor") then
+				table.remove(arrObjects, table.find(arrObjects, object))
+				connection:Disconnect()
+			end
+		end)
+	end
+	
+	for _,object in pairs(arrObjects) do
+		monitorJoints(object)
 	end
 	
 	groupBtn.MouseButton1Down:Connect(function()
@@ -482,9 +497,19 @@ function createGroupBtn(group, targetPartName)
 		end
 	end)
 	
+	group.ChildAdded:Connect(function(object)
+		monitorJoints(object)
+	end)
+	
+	group.ChildRemoved:Connect(function(object)
+		if table.find(arrObjects, object) then
+			table.remove(arrObjects, table.find(arrObjects, object))
+		end
+	end)
+	
 	mouseLeave()
 	
-	groupObjects[group] = targetPartName
+	groupObjects[group] = {["TargetPart"] = targetPartName, ["Objects"] = arrObjects}
 end
 
 function showDesiredObj(objID)
@@ -740,9 +765,9 @@ end
 
 function getClosestInCircle()
 	local prevClosest, prevDist, curDist, hrp
-	for group, targPart in pairs(groupObjects) do
-		for _, enemy in pairs(group:GetChildren()) do
-			hrp = getBasics(enemy, targPart)
+	for group, groupData in pairs(groupObjects) do
+		for _, enemy in pairs(groupData.Objects) do
+			hrp = getBasics(enemy, groupData.TargetPart)
 			if hrp and isPosInCircle(hrp.Position) then
 				curDist = (camera.CFrame.Position - hrp.Position).Magnitude
 				if (prevDist and prevDist > curDist) or not prevDist then
