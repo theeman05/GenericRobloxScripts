@@ -797,6 +797,8 @@ RS.Stepped:Connect(function()
 		target = targetFunct()
 		if target then
 			lookCameraAt(target.Position)
+		else
+			camera.CameraType = Enum.CameraType.Custom
 		end
 	end
 	
