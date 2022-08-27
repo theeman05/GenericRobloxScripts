@@ -9,6 +9,7 @@ local ROOT = {
 	Properties = {
 		Name = "BOTTERGUI";
 		ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+		ResetOnSpawn = false;
 	};
 	Children = {
 		{
