@@ -471,6 +471,7 @@ function createGroupBtn(group, targetPartName)
 			if removeObj:IsA("Weld") or removeObj:IsA("Motor") then
 				removed += 1
 				if removed >= 5 then
+						print(removed)
 					table.remove(arrObjects, table.find(arrObjects, object))
 					connection:Disconnect()
 				end
