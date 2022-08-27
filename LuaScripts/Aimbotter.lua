@@ -9,7 +9,7 @@ local ROOT = {
 	Properties = {
 		Name = "BOTTERGUI";
 		ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
-		ResetOnSpawn = false;
+		ResetOnSpawn = false
 	};
 	Children = {
 		{
@@ -297,14 +297,14 @@ local ROOT = {
 			Type = "ImageLabel";
 			Properties = {
 				ImageColor3 = Color3.new(0,1,1);
-				ImageTransparency = 0.699999988079071;
+				ImageTransparency = 0.9;
 				AnchorPoint = Vector2.new(0.5,0.5);
 				Image = "rbxassetid://8887908111";
 				BackgroundTransparency = 1;
 				Position = UDim2.new(0.5,0,0.5,0);
 				Visible = false;
 				Name = "BotCircle";
-				Size = UDim2.new(0,150,0,150);
+				Size = UDim2.new(0, 300, 0, 300);
 				BackgroundColor3 = Color3.new(1,1,1);
 			};
 			Children = {};
@@ -471,7 +471,6 @@ function createGroupBtn(group, targetPartName)
 			if removeObj:IsA("Weld") or removeObj:IsA("Motor") then
 				removed += 1
 				if removed >= 5 then
-						print(removed)
 					table.remove(arrObjects, table.find(arrObjects, object))
 					connection:Disconnect()
 				end
@@ -504,6 +503,7 @@ function createGroupBtn(group, targetPartName)
 	end)
 	
 	group.ChildAdded:Connect(function(object)
+		table.insert(arrObjects, object)
 		monitorJoints(object)
 	end)
 	
