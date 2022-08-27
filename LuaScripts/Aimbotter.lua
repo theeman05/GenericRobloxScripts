@@ -466,10 +466,14 @@ function createGroupBtn(group, targetPartName)
 	
 	local function monitorJoints(object)
 		local connection
+		local removed = 0
 		connection = object.DescendantRemoving:Connect(function(removeObj)
 			if removeObj:IsA("Weld") or removeObj:IsA("Motor") then
-				table.remove(arrObjects, table.find(arrObjects, object))
-				connection:Disconnect()
+				removed += 1
+				if removed >= 5 then
+					table.remove(arrObjects, table.find(arrObjects, object))
+					connection:Disconnect()
+				end
 			end
 		end)
 	end
