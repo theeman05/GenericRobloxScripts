@@ -1,151 +1,173 @@
 local RS = game:GetService("RunService")
 local UIS = game:GetService("UserInputService")
 
-local TRIGGER = Enum.UserInputType.MouseButton2
-
 local ROOT = {
 	ID = 0;
 	Type = "ScreenGui";
 	Properties = {
+		ResetOnSpawn = false;
 		Name = "BOTTERGUI";
 		ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
-		ResetOnSpawn = false
 	};
 	Children = {
 		{
 			ID = 1;
-			Type = "ImageButton";
+			Type = "ImageLabel";
 			Properties = {
-				ImageColor3 = Color3.new(0,0,0);
-				ScaleType = Enum.ScaleType.Slice;
-				Active = true;
+				ImageColor3 = Color3.new(0,1,1);
+				ImageTransparency = 0.8999999761581421;
+				AnchorPoint = Vector2.new(0.5,0.5);
 				Image = "rbxassetid://8887908111";
 				BackgroundTransparency = 1;
-				Position = UDim2.new(0,0,0,0);
-				SliceScale = 0.03799999877810478;
+				Position = UDim2.new(0.5,0,0.5,0);
+				Visible = false;
+				Name = "BotCircle";
+				Size = UDim2.new(0,300,0,300);
+				BackgroundColor3 = Color3.new(1,1,1);
+			};
+			Children = {};
+		};
+		{
+			ID = 2;
+			Type = "ImageButton";
+			Properties = {
+				ImageColor3 = Color3.new(1,2/3,127/255);
+				ScaleType = Enum.ScaleType.Slice;
+				Image = "rbxassetid://10748761786";
+				BackgroundTransparency = 1;
+				Position = UDim2.new(0.8500000238418579,0,0.24899999797344208,0);
+				SliceScale = 0.10000000149011612;
 				Name = "Background";
 				Size = UDim2.new(0,250,0,300);
-				SliceCenter = Rect.new(Vector2.new(250,250),Vector2.new(250,250));
+				SliceCenter = Rect.new(Vector2.new(100,100),Vector2.new(400,400));
 			};
 			Children = {
 				{
-					ID = 2;
+					ID = 3;
 					Type = "ImageLabel";
 					Properties = {
 						ImageColor3 = Color3.new(53/255,53/255,53/255);
-						ScaleType = Enum.ScaleType.Slice;
-						Active = true;
-						Image = "rbxassetid://8887908111";
+						Image = "rbxassetid://10748761786";
 						BackgroundTransparency = 1;
-						Position = UDim2.new(0,2,0,2);
-						SliceScale = 0.035999998450279236;
-						Name = "GroupsFrame";
-						Size = UDim2.new(1,-4,1,-4);
-						SliceCenter = Rect.new(Vector2.new(250,250),Vector2.new(250,250));
+						SliceScale = 0.10000000149011612;
+						Size = UDim2.new(1,0,0,36);
+						ScaleType = Enum.ScaleType.Slice;
+						SliceCenter = Rect.new(Vector2.new(100,100),Vector2.new(400,500));
 					};
 					Children = {
 						{
-							ID = 3;
-							Type = "ScrollingFrame";
+							ID = 4;
+							Type = "TextLabel";
 							Properties = {
-								ScrollBarImageColor3 = Color3.new(0,0,0);
-								Position = UDim2.new(0,0,0,40);
-								Active = true;
-								Size = UDim2.new(1,0,1,-100);
-								ZIndex = 2;
-								BackgroundColor3 = Color3.new(1,2/3,127/255);
-								CanvasSize = UDim2.new();
+								FontSize = Enum.FontSize.Size28;
+								TextColor3 = Color3.new(1,1,1);
+								Text = "Scannable Groups:";
+								TextStrokeTransparency = 0;
+								BackgroundTransparency = 1;
+								Font = Enum.Font.SourceSansBold;
+								Name = "Header";
+								TextWrapped = true;
+								Size = UDim2.new(1,-36,0,35);
+								TextWrap = true;
+								TextSize = 27;
+								BackgroundColor3 = Color3.new(1,1,1);
+							};
+							Children = {};
+						};
+						{
+							ID = 5;
+							Type = "ImageButton";
+							Properties = {
+								ImageColor3 = Color3.new(53/255,53/255,53/255);
+								ScaleType = Enum.ScaleType.Slice;
+								PressedImage = "rbxassetid://8887968624";
+								HoverImage = "rbxassetid://8887979312";
+								Image = "rbxassetid://8887908111";
+								BackgroundTransparency = 1;
+								Position = UDim2.new(1,-36,0,2);
+								SliceScale = 0.03999999910593033;
+								Name = "Close";
+								Size = UDim2.new(0,34,0,34);
+								SliceCenter = Rect.new(Vector2.new(250,250),Vector2.new(250,500));
 							};
 							Children = {
 								{
-									ID = 4;
-									Type = "UIListLayout";
+									ID = 6;
+									Type = "TextLabel";
 									Properties = {
-										Padding = UDim.new(0,2);
-										SortOrder = Enum.SortOrder.LayoutOrder;
-									};
-									Children = {};
-								};
-								{
-									ID = 5;
-									Type = "ImageButton";
-									Properties = {
-										ImageColor3 = Color3.new(1,2/3,127/255);
-										ScaleType = Enum.ScaleType.Slice;
-										Name = "TestGroup";
-										PressedImage = "rbxassetid://8887968624";
-										HoverImage = "rbxassetid://8887979312";
-										Image = "rbxassetid://8887908111";
+										TextWrapped = true;
+										TextColor3 = Color3.new(1,0,0);
+										Text = "X";
+										TextStrokeTransparency = 0;
+										Font = Enum.Font.GothamBold;
 										BackgroundTransparency = 1;
-										Size = UDim2.new(1,0,0,25);
-										SliceScale = 0.0010000000474974513;
-										ZIndex = 2;
-										Archivable = false;
-										SliceCenter = Rect.new(Vector2.new(250,250),Vector2.new(250,250));
-									};
-									Children = {
-										{
-											ID = 6;
-											Type = "TextLabel";
-											Properties = {
-												FontSize = Enum.FontSize.Size18;
-												TextColor3 = Color3.new(1,1,1);
-												Text = "Drones";
-												TextStrokeTransparency = 0;
-												BackgroundTransparency = 1;
-												Font = Enum.Font.SourceSansSemibold;
-												Name = "TextButton";
-												TextXAlignment = Enum.TextXAlignment.Left;
-												Size = UDim2.new(1,0,1,0);
-												ZIndex = 2;
-												TextSize = 16;
-												BackgroundColor3 = Color3.new(1,1,1);
-											};
-											Children = {
-												{
-													ID = 7;
-													Type = "Frame";
-													Properties = {
-														Name = "Line";
-														Position = UDim2.new(0,0,1,-1);
-														Size = UDim2.new(1,0,0,1);
-														ZIndex = 2;
-														BorderSizePixel = 0;
-														BackgroundColor3 = Color3.new(0,0,0);
-													};
-													Children = {};
-												};
-											};
-										};
-									};
-								};
-								{
-									ID = 8;
-									Type = "UIPadding";
-									Properties = {
-										PaddingLeft = UDim.new(0,5);
+										Size = UDim2.new(1,0,1,0);
+										FontSize = Enum.FontSize.Size36;
+										TextWrap = true;
+										TextSize = 35;
+										BackgroundColor3 = Color3.new(1,1,1);
 									};
 									Children = {};
 								};
 							};
 						};
+					};
+				};
+				{
+					ID = 7;
+					Type = "Frame";
+					Properties = {
+						Name = "Content";
+						Position = UDim2.new(0,0,0,36);
+						BackgroundTransparency = 1;
+						Size = UDim2.new(1,0,1,-36);
+						BackgroundColor3 = Color3.new(1,1,1);
+					};
+					Children = {
 						{
-							ID = 9;
-							Type = "ImageLabel";
+							ID = 8;
+							Type = "Frame";
 							Properties = {
-								ImageColor3 = Color3.new(1,2/3,127/255);
-								ScaleType = Enum.ScaleType.Slice;
-								Image = "rbxassetid://8887908111";
 								BackgroundTransparency = 1;
-								Position = UDim2.new(0,0,0.5,0);
-								SliceScale = 0.035999998450279236;
-								Name = "Frame";
-								Size = UDim2.new(1,0,0.5,0);
-								SliceCenter = Rect.new(Vector2.new(250,250),Vector2.new(250,250));
+								Size = UDim2.new(1,0,1,0);
+								Name = "GroupsFrame";
+								Active = true;
 							};
 							Children = {
 								{
-									ID = 10;
+									ID = 9;
+									Type = "ScrollingFrame";
+									Properties = {
+										ScrollBarImageColor3 = Color3.new(0,0,0);
+										Name = "GroupScroller";
+										Active = true;
+										Size = UDim2.new(1,0,0.800000011920929,0);
+										ZIndex = 2;
+										BackgroundColor3 = Color3.new(1,2/3,127/255);
+										CanvasSize = UDim2.new();
+									};
+									Children = {
+										{
+											ID = 10;
+											Type = "UIListLayout";
+											Properties = {
+												Padding = UDim.new(0,2);
+												SortOrder = Enum.SortOrder.LayoutOrder;
+											};
+											Children = {};
+										};
+										{
+											ID = 11;
+											Type = "UIPadding";
+											Properties = {
+												PaddingLeft = UDim.new(0,5);
+											};
+											Children = {};
+										};
+									};
+								};
+								{
+									ID = 12;
 									Type = "ImageButton";
 									Properties = {
 										ImageColor3 = Color3.new(0,1,127/255);
@@ -154,7 +176,7 @@ local ROOT = {
 										HoverImage = "rbxassetid://8887979312";
 										Image = "rbxassetid://8887908111";
 										BackgroundTransparency = 1;
-										Position = UDim2.new(0.5,-50,1,-50);
+										Position = UDim2.new(0.5,-50,0.8299999833106995,0);
 										SliceScale = 0.035999998450279236;
 										Name = "AddGroupBtn";
 										Size = UDim2.new(0,100,0,40);
@@ -162,7 +184,7 @@ local ROOT = {
 									};
 									Children = {
 										{
-											ID = 11;
+											ID = 13;
 											Type = "TextLabel";
 											Properties = {
 												FontSize = Enum.FontSize.Size24;
@@ -183,131 +205,18 @@ local ROOT = {
 							};
 						};
 						{
-							ID = 12;
-							Type = "TextLabel";
+							ID = 14;
+							Type = "UIPadding";
 							Properties = {
-								TextWrapped = true;
-								TextColor3 = Color3.new(1,1,1);
-								Text = "Scannable Groups:";
-								TextStrokeTransparency = 0;
-								Font = Enum.Font.SourceSansBold;
-								BackgroundTransparency = 1;
-								Size = UDim2.new(1,-36,0,40);
-								FontSize = Enum.FontSize.Size28;
-								TextWrap = true;
-								TextSize = 27;
-								BackgroundColor3 = Color3.new(1,1,1);
-							};
-							Children = {
-								{
-									ID = 13;
-									Type = "Frame";
-									Properties = {
-										Name = "Line";
-										Position = UDim2.new(0,0,1,-1);
-										Size = UDim2.new(1,0,0,1);
-										BorderSizePixel = 0;
-										BackgroundColor3 = Color3.new(0,0,0);
-									};
-									Children = {};
-								};
-							};
-						};
-					};
-				};
-				{
-					ID = 14;
-					Type = "ImageLabel";
-					Properties = {
-						ImageColor3 = Color3.new(53/255,53/255,53/255);
-						ScaleType = Enum.ScaleType.Slice;
-						Visible = false;
-						Image = "rbxassetid://8887908111";
-						BackgroundTransparency = 1;
-						Position = UDim2.new(0,2,0,2);
-						SliceScale = 0.035999998450279236;
-						Name = "SelectTargetLabel";
-						Size = UDim2.new(1,-4,1,-4);
-						SliceCenter = Rect.new(Vector2.new(250,250),Vector2.new(250,250));
-					};
-					Children = {
-						{
-							ID = 15;
-							Type = "TextLabel";
-							Properties = {
-								FontSize = Enum.FontSize.Size14;
-								TextColor3 = Color3.new(1,1,1);
-								Text = "Select Target Part...";
-								Size = UDim2.new(1,-52,1,0);
-								TextStrokeTransparency = 0;
-								TextWrapped = true;
-								Font = Enum.Font.SourceSansBold;
-								BackgroundTransparency = 1;
-								Position = UDim2.new(0,5,0,0);
-								TextSize = 14;
-								BackgroundColor3 = Color3.new(1,1,1);
-								TextScaled = true;
-								TextWrap = true;
-							};
-							Children = {};
-						};
-					};
-				};
-				{
-					ID = 16;
-					Type = "ImageButton";
-					Properties = {
-						ImageColor3 = Color3.new(53/255,53/255,53/255);
-						ScaleType = Enum.ScaleType.Slice;
-						PressedImage = "rbxassetid://8887968624";
-						HoverImage = "rbxassetid://8887979312";
-						Image = "rbxassetid://8887908111";
-						BackgroundTransparency = 1;
-						Position = UDim2.new(1,-38,0,2);
-						SliceScale = 0.035999998450279236;
-						Name = "Close";
-						Size = UDim2.new(0,36,0,36);
-						SliceCenter = Rect.new(Vector2.new(250,250),Vector2.new(250,250));
-					};
-					Children = {
-						{
-							ID = 17;
-							Type = "TextLabel";
-							Properties = {
-								TextWrapped = true;
-								TextColor3 = Color3.new(1,0,0);
-								Text = "X";
-								TextStrokeTransparency = 0;
-								Font = Enum.Font.GothamBold;
-								BackgroundTransparency = 1;
-								Size = UDim2.new(1,0,1,0);
-								FontSize = Enum.FontSize.Size48;
-								TextWrap = true;
-								TextSize = 40;
-								BackgroundColor3 = Color3.new(1,1,1);
+								PaddingBottom = UDim.new(0,2);
+								PaddingLeft = UDim.new(0,2);
+								PaddingRight = UDim.new(0,2);
 							};
 							Children = {};
 						};
 					};
 				};
 			};
-		};
-		{
-			ID = 18;
-			Type = "ImageLabel";
-			Properties = {
-				ImageColor3 = Color3.new(0,1,1);
-				ImageTransparency = 0.9;
-				AnchorPoint = Vector2.new(0.5,0.5);
-				Image = "rbxassetid://8887908111";
-				BackgroundTransparency = 1;
-				Position = UDim2.new(0.5,0,0.5,0);
-				Visible = false;
-				Name = "BotCircle";
-				Size = UDim2.new(0, 300, 0, 300);
-				BackgroundColor3 = Color3.new(1,1,1);
-			};
-			Children = {};
 		};
 	};
 };
@@ -318,7 +227,7 @@ local GROUP_OBJ = {
 	Properties = {
 		ImageColor3 = Color3.new(1,2/3,127/255);
 		ScaleType = Enum.ScaleType.Slice;
-		Name = "TestGroup";
+		Name = "ImageButton";
 		PressedImage = "rbxassetid://8887968624";
 		HoverImage = "rbxassetid://8887979312";
 		Image = "rbxassetid://8887908111";
@@ -339,7 +248,7 @@ local GROUP_OBJ = {
 				TextStrokeTransparency = 0;
 				BackgroundTransparency = 1;
 				Font = Enum.Font.SourceSansSemibold;
-				Name = "TextButton";
+				Name = "GroupLabel";
 				TextXAlignment = Enum.TextXAlignment.Left;
 				Size = UDim2.new(1,0,1,0);
 				ZIndex = 2;
@@ -351,7 +260,7 @@ local GROUP_OBJ = {
 					ID = 7;
 					Type = "Frame";
 					Properties = {
-						Name = "Line";
+						Name = "Frame";
 						Position = UDim2.new(0,0,1,-1);
 						Size = UDim2.new(1,0,0,1);
 						ZIndex = 2;
@@ -372,7 +281,13 @@ local GROUP_OBJ = {
 local ENEMIES = workspace.Drones -- Enemy search folder
 local TARGET_PART = "Body" -- The target part name in the enemy
 local REQUIRES_HUM = false -- If we need a Humanoid for the search
---
+local AUTO_FIRE = true -- want the bot to shoot the target automatically?
+local FIRE_COOLDOWN = .05 -- how often we want to click
+local TRIGGER = Enum.KeyCode.LeftAlt
+local WALLS = true
+-- END CUSTOM VARIABLES -- 
+
+local NOT_IN_STUDIO = RS:IsStudio() == false
 
 local lPlayer = game.Players.LocalPlayer
 local pGui = lPlayer.PlayerGui
@@ -385,9 +300,11 @@ selectBox.LineThickness = .05
 local camera = workspace.CurrentCamera
 
 local toggled = false 
+local firing = false
+local nextFire = 0
 
-local groupObjects = {} -- [Group] = "TargetPart"
-local target, targetFunct, mouseTarg
+local groupObjects = {} -- [Group] = {["TargetPart"] = targetPartName, ["Objects"] = arrObjects}
+local target, targetFunct, mouseTarg, visibleTargObj
 
 local function Scan(item, parent, partsWithId:table, awaitRef:table)
 	if item.Properties.Archivable == nil or item.Properties.Archivable == true then
@@ -399,7 +316,10 @@ local function Scan(item, parent, partsWithId:table, awaitRef:table)
 				awaiting[1][awaiting[2]] = obj
 				awaitRef[item.ID] = nil
 			else
-				partsWithId[item.ID] = obj
+				--partsWithId[item.ID] = obj
+				if item.Properties.Name and item.Properties.Name ~= item.Type then
+					partsWithId[item.Properties.Name] = obj -- Call objects based on their given name
+				end
 			end
 		end
 		for p,v in pairs(item.Properties) do
@@ -428,16 +348,41 @@ local function snapNumber(num, increment)
 	return increment and math.round(num / increment) * increment or num
 end
 
+
+-------------- CLEANUP STUFF ------------------
+local CONNECTION_TYPE = "RBXScriptConnection"
+local Cleanup_Objects = {Connections = {}, Instances = {}}
+
+function Add_Destroyable(object)
+	if typeof(object) == CONNECTION_TYPE then
+		table.insert(Cleanup_Objects.Connections, object)
+	else
+		table.insert(Cleanup_Objects.Instances, object)
+	end
+end
+
+local function Destroy_Self()
+	for _, connection in pairs(Cleanup_Objects.Connections) do
+		connection:Disconnect()
+	end
+
+	for _, instance in pairs(Cleanup_Objects.Instances) do
+		instance:Destroy()
+	end
+end
+
+-------------- END CLEANUP STUFF ------------------
 ---------------------GUI STUFF---------------------
 local enteredObjectFunct = nil -- Basically remote MouseLeave
 local partswithIdG = {}
-local root = Scan(ROOT, pGui, partswithIdG)
-local background = partswithIdG[1]
-local groupsScroller = partswithIdG[3]
+local root = Scan(ROOT, NOT_IN_STUDIO and game.CoreGui or pGui, partswithIdG)
+local background = partswithIdG["Background"]
+local groupsScroller = partswithIdG["GroupScroller"]
+local header = partswithIdG["Header"]
 
-local groupsID, targetsID = 2, 14
+local groupsID, targetsID = "GroupsFrame", "TargetLabel"
 
-local circle = partswithIdG[18]
+local circle = partswithIdG["BotCircle"]
 local circleSize = circle.AbsoluteSize
 
 local selectingTarg = false
@@ -446,8 +391,8 @@ local selectedTarg = nil
 local prevVisibleObj
 
 local uiObjsDat = {
-	[groupsID] = {Object = partswithIdG[groupsID], Size = UDim2.new(0, 250, 0, 300)}; 
-	[targetsID] = {Object = partswithIdG[targetsID], Size = UDim2.new(0, 225, 0, 40)}
+	[groupsID] = {Object = partswithIdG[groupsID], Size = UDim2.new(0, 250, 0, 300), HeaderText = "Scannable Groups:"}; 
+	[targetsID] = {Size = UDim2.new(0, 225, 0, 40), HeaderText = "Select Target Part..."}
 }
 
 function createGroupBtn(group, targetPartName)
@@ -457,7 +402,7 @@ function createGroupBtn(group, targetPartName)
 	
 	local partswithId = {}
 	local groupBtn = Scan(GROUP_OBJ, groupsScroller, partswithId)
-	local groupLabel = partswithId[6]
+	local groupLabel = partswithId["GroupLabel"]
 	local arrObjects = group:GetChildren()
 
 	local function mouseLeave()
@@ -467,15 +412,24 @@ function createGroupBtn(group, targetPartName)
 	local function monitorJoints(object)
 		local connection
 		local removed = 0
+		
+		if WALLS then
+			local highlight = Instance.new("Highlight", object)
+			highlight.Adornee = object
+			Add_Destroyable(highlight)
+		end
+		
 		connection = object.DescendantRemoving:Connect(function(removeObj)
-			if removeObj:IsA("Weld") or removeObj:IsA("Motor") then
+			if removeObj:IsA("Folder") or removeObj:IsA("BasePart") then
 				removed += 1
-				if removed >= 5 then
+				if removeObj:IsA("Folder") or removed >= 5 then
 					table.remove(arrObjects, table.find(arrObjects, object))
 					connection:Disconnect()
 				end
 			end
 		end)
+		
+		Add_Destroyable(connection)
 	end
 	
 	for _,object in pairs(arrObjects) do
@@ -502,16 +456,16 @@ function createGroupBtn(group, targetPartName)
 		end
 	end)
 	
-	group.ChildAdded:Connect(function(object)
+	Add_Destroyable(group.ChildAdded:Connect(function(object)
 		table.insert(arrObjects, object)
 		monitorJoints(object)
-	end)
+	end))
 	
-	group.ChildRemoved:Connect(function(object)
+	Add_Destroyable(group.ChildRemoved:Connect(function(object)
 		if table.find(arrObjects, object) then
 			table.remove(arrObjects, table.find(arrObjects, object))
 		end
-	end)
+	end))
 	
 	mouseLeave()
 	
@@ -531,31 +485,37 @@ function showDesiredObj(objID)
 	end
 	
 	background.Size = objDat.Size
-	objDat.Object.Visible = true
+	
+	if objDat.Object then
+		objDat.Object.Visible = true
+	end
+	
+	header.Text = objDat.HeaderText
 	prevVisibleObj = objDat.Object
 end
 
-partswithIdG[10].MouseButton1Down:Connect(function()
+partswithIdG["AddGroupBtn"].MouseButton1Down:Connect(function()
 	showDesiredObj(targetsID)
 	selectingTarg = true
 end)
 
-partswithIdG[16].MouseButton1Down:Connect(function()
+partswithIdG["Close"].MouseButton1Down:Connect(function()
 	showDesiredObj(groupsID)
 end)
 
 createGroupBtn(ENEMIES, TARGET_PART)
 showDesiredObj(groupsID)
 
-mouse.Button1Down:Connect(function()
+Add_Destroyable(mouse.Button1Down:Connect(function()
 	if selectingTarg then
 		selectingTarg = false
 		createGroupBtn(selectedTarg.Parent.Parent, selectedTarg.Name)
 		showDesiredObj(groupsID)
 		selectBox.Adornee = nil
 	end
-end)
+end))
 
+Add_Destroyable(root)
 
 do
 	local SEL_START_SIG = "SelectionStart"
@@ -691,19 +651,21 @@ do
 	
 	moveObjOnHold(background, background)
 	
-	UIS.InputBegan:Connect(function(input)
+	Add_Destroyable(UIS.InputBegan:Connect(function(input)
 		local intputType = input.UserInputType 
-		if intputType == TRIGGER then
+		if intputType == TRIGGER or input.KeyCode == TRIGGER then
 			toggled = true
 			circle.Visible = true
 		elseif intputType == MOUSE_1 then
 			mouseDown = true
+		elseif input.KeyCode == Enum.KeyCode.Semicolon then
+			Destroy_Self()
 		end
-	end)
+	end))
 
-	UIS.InputEnded:Connect(function(input)
+	Add_Destroyable(UIS.InputEnded:Connect(function(input)
 		local intputType = input.UserInputType 
-		if intputType == TRIGGER then
+		if intputType == TRIGGER or input.KeyCode == TRIGGER then
 			toggled = false
 			circle.Visible = false
 			camera.CameraType = Enum.CameraType.Custom
@@ -712,8 +674,9 @@ do
 			movingObjDat = nil
 			lastMousePos = nil
 		end
-	end)
-	UIS.InputChanged:Connect(onInputChanged)
+	end))
+	
+	Add_Destroyable(UIS.InputChanged:Connect(onInputChanged))
 end
 
 -------------------END GUI STUFF-------------------
@@ -749,6 +712,25 @@ function isPosInCircle(objectPos)
 		yDist = maxY - math.abs(locallized.Y - circleRadius)
 		return yDist >= 0 and yDist <= maxY 
 	end
+end
+
+function isVisible(part:BasePart)
+	local headCF = lPlayer.Character.Head.CFrame
+	local diff = part.Position - headCF.Position
+	local parms = RaycastParams.new()
+	parms.FilterType = Enum.RaycastFilterType.Blacklist
+	parms.FilterDescendantsInstances = {lPlayer.Character}
+	local ray = workspace:Raycast(lPlayer.Character.Head.Position + headCF.LookVector, diff.Unit * (diff.Magnitude + 2), parms)
+	return ray and ray.Instance:IsDescendantOf(part.Parent)
+end
+
+function getVisibleInGroup(group)
+	for _, object in pairs(group) do
+		if object:IsA("BasePart") and isVisible(object) then
+			return object
+		end
+	end
+	return nil
 end
 
 -- Note this is based on the camera pos in a given set
@@ -787,19 +769,49 @@ function getClosestInCircle()
 end
 -------------------END AIMBOT STUFF-------------------
 
+function activiateTrigger(compareTick:number)
+	if nextFire <= compareTick then
+		nextFire = compareTick + FIRE_COOLDOWN
+		circle.ImageColor3 = Color3.new(1,0,1)
+		if NOT_IN_STUDIO then
+			mouse1press()
+			pressed = true
+		end
+	elseif pressed and NOT_IN_STUDIO then
+		pressed = false
+		mouse1release()
+	end
+end
+
 ------------------INIT------------------
+local curTick = tick()
 targetFunct = getClosestInCircle
+Add_Destroyable(selectBox)
 ----------------------------------------
 
-RS.Stepped:Connect(function()
+
+Add_Destroyable(RS.Stepped:Connect(function()
+	curTick = tick()
 	if toggled then
 		--circle.Position = UDim2.new(0,mouse.X,0,mouse.Y)
 		target = targetFunct()
 		if target then
-			lookCameraAt(target.Position)
+			visibleTargObj = (isVisible(target) and target) or getVisibleInGroup(target.Parent:GetChildren())
+			if visibleTargObj then
+				lookCameraAt(visibleTargObj.Position)
+				if AUTO_FIRE then
+					activiateTrigger(curTick)
+				end
+			else
+				lookCameraAt(target.Position)
+				circle.ImageColor3 = Color3.new(0,1,1)
+			end
 		else
 			camera.CameraType = Enum.CameraType.Custom
 		end
+	elseif pressed and NOT_IN_STUDIO then
+		pressed = false
+		mouse1release()
 	end
 	
 	if selectingTarg then
@@ -811,4 +823,4 @@ RS.Stepped:Connect(function()
 			selectBox.Adornee = nil
 		end
 	end
-end)
+end))
